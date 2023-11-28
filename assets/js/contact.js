@@ -1,22 +1,11 @@
-const contactForm = document.getElementById('contact-form'),
-      contactMessage = document.getElementById('contact-message')
+document.getElementById('contact-form').addEventListener('submit', function (event) {
+    event.preventDefault(); 
 
-const sendEmail = (e) => {
-    e.preventDefault()
+    const contactForm = document.getElementById('name').value;
+    const contactEmail = document.getElementById('email').value;
+    const contactMessage = document.getElementById('message').value;
 
-    emailjs.sendForm('', '', '#contact-form', '')
-        .then(() => {
-            contactMessage.textContent = 'Message sent successfully ✅'
-
-            setTimeout(() => {
-                contactMessage.textContent = ''
-            }, 5000)
-
-            contactForm.reset()
-
-        }, () => {
-            contactMessage.textContent = 'Message not sent (service error) ❌'
-        })
-}
-
-contactForm.addEventListener('submit', sendEmail)
+    console.log("Name: ", contactForm);
+    console.log("Email: ", contactEmail);
+    console.log("Message: ", contactMessage);
+});
